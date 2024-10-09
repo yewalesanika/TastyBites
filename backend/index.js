@@ -58,7 +58,7 @@ app.get("/listings",async(req,res)=>{
 
 app.get("/listings/:id",async(req,res)=>{
     let id = req.params.id;
-    const listing = await Listings.findById({_id:id});
+    const listing = await Listings.findById({_id:id}).populate("review");
     res.json(listing);
 })
 
@@ -94,6 +94,12 @@ app.post("/listings/:id/reviews",validateReview,wrapAsync(async(req,res)=>{
     await newReview.save();
     await listing.save();
     console.log("review saved");
+}))
+
+app.delete("/listings/:id/reviews/:reviewId",wrapAsync(async(req,res)=>{
+    let {id,reviewId} = req.params;
+    await Listings.findByIdAndUpdate(id,{$pull:{reviews:reviewId}});
+    await Review.findByIdAndDelete(reviewId)
 }))
 
 app.all("*",(req,res,next)=>{

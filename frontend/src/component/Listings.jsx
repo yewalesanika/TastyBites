@@ -7,7 +7,7 @@ function Listings({ list }) {
             {
                 list ?
                     <Link to={`/listings/${list._id}`} style={{ textDecoration: 'none' }}>
-                        <div className="card" >
+                        <div className="card card-listing p-3" >
                             <img src={list.image} className="card-img-top" style={{ height: '15rem' }} alt="listing_img" />
                             <div className="card-img-overlay"> </div>
                                 <div className="card-body">

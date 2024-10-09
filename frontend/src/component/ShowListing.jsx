@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import Reviews from './Reviews';
+import ShowReviews from './ShowReviews';
 
 function ShowListing() {
     const [showlist, setShowlist] = useState();
@@ -38,7 +39,7 @@ function ShowListing() {
                 {showlist ? (
                     <>
                         <div className="col-8 offset-2 mt-2">
-                            <div className="card col-6 offset-3" >
+                            <div className="card card-listing col-6 offset-3" >
                                 <h5>Details</h5>
                                 <img src={showlist.image} className="card-img-top show-img" alt="..." />
                                 <div className="card-body">
@@ -56,6 +57,8 @@ function ShowListing() {
                                 </div>
                                 <hr />
                                 <Reviews></Reviews>
+                                <hr />
+                                <ShowReviews listingReview={showlist.review} />
                             </div>
                         </div>
                     </>
