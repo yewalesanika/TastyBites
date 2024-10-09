@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import NavBar from './NavBar';
 import Footer from './Footer';
+import Reviews from './Reviews';
 
 function ShowListing() {
     const [showlist, setShowlist] = useState();
@@ -39,20 +40,22 @@ function ShowListing() {
                         <div className="col-8 offset-2 mt-2">
                             <div className="card col-6 offset-3" >
                                 <h5>Details</h5>
-                                <img src={showlist.image} class="card-img-top show-img" alt="..." />
-                                <div class="card-body">
-                                    <h5 class="card-title">{showlist.title}</h5>
-                                    <p class="card-text">
+                                <img src={showlist.image} className="card-img-top show-img" alt="..." />
+                                <div className="card-body">
+                                    <h5 className="card-title">{showlist.title}</h5>
+                                    <p className="card-text">
                                     &#8377;{showlist.price}<br></br>
                                     {showlist.description} 
                                     </p>
                                 </div>
-                                <div className="btns">
+                                <div className="btns mt-3">
                                     <Link to={`/listings/${showlist._id}/edit`}>
                                         <button className='btn btn-success'>Edit</button>
                                     </Link>
                                     <button className='btn btn-success offset-3' onClick={(e) => handleDelete(showlist._id)}>Delete</button>
                                 </div>
+                                <hr />
+                                <Reviews></Reviews>
                             </div>
                         </div>
                     </>
