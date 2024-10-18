@@ -23,14 +23,16 @@ router.get("/",async(req,res)=>{
 
 router.get("/:id",async(req,res)=>{
     let id = req.params.id;
-    const listing = await Listings.findById({_id:id}).populate("review");
+    const listing = await Listings.findById({_id:id}).populate("review").populate("owner");
     res.json(listing);
 })
 
-router.post("/",validateListing,wrapAsync(async(req,res)=>{
+router.post("/new",validateListing,wrapAsync(async(req,res)=>{
     let listing = req.body;
     const newListing = new Listings(listing);
+    req.flash("sucess","new Listing created")
     await newListing.save();
+    res.json({success:req.flash("sucess")[0]})
 }))
 
 router.get("/:id/edit",async(req,res)=>{

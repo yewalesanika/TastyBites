@@ -33,8 +33,8 @@ function CreateListing() {
 
     const submit = (e) => {
         e.preventDefault();
-        console.log(formState);
-        axios.post("http://localhost:8080/listings", formState)
+        //console.log(formState);
+        axios.post("http://localhost:8080/listings/new", formState)
             .then((res) => {
                 navigate("/listings");
             })

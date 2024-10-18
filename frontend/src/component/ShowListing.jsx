@@ -45,8 +45,8 @@ function ShowListing() {
                                 <div className="card-body">
                                     <h5 className="card-title">{showlist.title}</h5>
                                     <p className="card-text">
-                                    &#8377;{showlist.price}<br></br>
-                                    {showlist.description} 
+                                        &#8377;{showlist.price}<br></br>
+                                        {showlist.description} 
                                     </p>
                                 </div>
                                 <div className="btns mt-3">

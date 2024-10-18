@@ -4,6 +4,8 @@ import Home from './component/Home';
 import ShowListing from './component/ShowListing';
 import CreateListing from './component/CreateListing';
 import EditListing from './component/EditListing'
+import SignUp from './component/SignUp';
+import Login from './component/Login';
 
 function App() {
 
@@ -16,6 +18,8 @@ function App() {
           <Route path='/listings/:id' element={<ShowListing />}></Route>
           <Route path='/listings/new' element={<CreateListing />}></Route>
           <Route path='/listings/:id/edit' element={<EditListing />}></Route>
+          <Route path='/signup' element={<SignUp/>}></Route>
+          <Route path='/login' element={<Login/>}></Route>
         </Routes>
       </Router>
     </>

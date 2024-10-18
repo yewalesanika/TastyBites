@@ -1,9 +1,10 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUtensils } from "@fortawesome/free-solid-svg-icons"; 
+import { faUtensils } from "@fortawesome/free-solid-svg-icons";
 
 function NavBar() {
+    const isAuthenticated = localStorage.getItem('isAuthenticated');
     return (
         <>
             <nav className="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
@@ -16,6 +17,18 @@ function NavBar() {
                         <div className="navbar-nav">
                             <Link className="nav-link" to="/listings">Home</Link>
                             <Link className="nav-link" to="/listings/new">Add new listing</Link>
+                        </div>
+                        <div className="navbar-nav ms-auto">
+                            {
+                                !isAuthenticated ? (
+                                    <>
+                                        <Link className="nav-link" to="/signup">Signup</Link>
+                                        <Link className="nav-link" to="/login">Login</Link>
+                                    </>
+                                ) : (
+                                    <Link className="nav-link" to="/logout">Logout</Link>
+                                )
+                            }
                         </div>
                     </div>
                 </div>
